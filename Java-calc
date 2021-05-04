@@ -1,0 +1,107 @@
+import java.util.Scanner;
+
+public class Geometry
+{
+public static void main (String [] args)
+ {
+	double radiusCircle, length,width,height,base;
+	double side1,side2,side3;
+	int choose;
+	char choice; // y/n
+	double result=0;
+	
+ Scanner keyboard = new Scanner(System.in);
+ do {
+	 Printmenu();
+	 choose=keyboard.nextInt();
+	 
+	 switch(choose) {
+	 case 1:
+		 System.out.println("Enter the radius of the circle:");
+		 radiusCircle=keyboard.nextDouble();
+		 result =circleArea(radiusCircle); //called the function circle area 
+		 System.out.println("The area of the circle is: "+result);
+		 break;
+	 case 2:
+		 System.out.println("Enter the length of the rectangle: ");
+		 length=keyboard.nextDouble();
+		 System.out.println("Enter the width of the rectangle: ");
+		 width=keyboard.nextDouble();
+		 result=rectangleArea(length,width); // called the function rectangle area
+		 System.out.println("The area of the rectangle is: "+result);
+		 break;
+	 case 3:
+		 System.out.println("Enter height of the triangle: ");
+		 height=keyboard.nextDouble();
+		 System.out.println("Enter the base of the triangle:");
+		 base=keyboard.nextDouble();
+		 result=triangleArea(height,base); // called the function triangle area
+		 System.out.println("The area of the triangle is: "+result);
+		 break;
+	 case 4:
+		 System.out.println("Enter The radius of the circle: ");
+		 radiusCircle=keyboard.nextDouble();
+		 result=circleCircumference(radiusCircle); //called the function circle circumferece
+		 System.out.println("The circumference of the circle is: "+result);
+		 break;
+	 case 5:
+		 System.out.println("Enter The length of the rectangle: ");
+		 length=keyboard.nextDouble();
+		 System.out.println("Enter the width of the rectangle: ");
+		 width=keyboard.nextDouble();
+		 result=rectanglePerimeter(length,width); //called the function rectangle perimeter
+		 System.out.println("The perimeter of the rectangle is: "+result);
+		 break;
+	 case 6:
+		 System.out.println("Enter the length of side one of the triangle: ");
+		 side1=keyboard.nextDouble();
+		 System.out.println("Enter the length of side two of the triangle: ");
+		 side2=keyboard.nextDouble();
+		 System.out.println("Enter the length of side threee of the triangle: ");
+		 side3=keyboard.nextDouble();
+		 result=trianglePerimeter(side1,side2,side3); // called the function triangle perimeter
+		 System.out.println("The perimeter of the triangle is: "+result);
+		 break;
+		 default:
+		System.out.println("You did not enter one of the selected numbers:");
+	 }
+	 
+	 keyboard.nextLine();
+	 System.out.println("Would you like you to exit?");
+	 String response=keyboard.nextLine();
+	 choice=response.charAt(0);
+ }while(choice != 'Y' && choice!='y');
+
+ 
+
+}
+public static void Printmenu() {
+	 System.out.println("This is a geometry calculator");
+	 System.out.println("Choose what you would like to calculate");
+	 System.out.println("1. Find the area of a circle");
+	 System.out.println("2. Find the area of a rectangle");
+	 System.out.println("3. Find the area of a triangle");
+	 System.out.println("4. Find the circumference of a circle");
+	 System.out.println("5. Find the perimeter of a rectangle");
+	 System.out.println("6. Find the perimeter of a triangle");
+	 System.out.println("Enter the number of your choice");	 
+}
+public static double circleArea(double c) {
+	return Math.PI*c*c;
+}
+public static double rectangleArea(double l, double w) { //length and width
+	return l*w;
+}
+public static double triangleArea(double h, double b) { // height and base
+	return 0.5*h*b;
+}
+public static double circleCircumference(double radius) {
+	return 2*Math.PI*radius;
+}
+public static double rectanglePerimeter(double l, double w) { //length and width
+	return 2*l+2*w;
+}
+public static double trianglePerimeter(double s1, double s2, double s3) { //add all sides
+	return s1+s2+s3;
+}
+}
